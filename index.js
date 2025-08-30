@@ -1,32 +1,24 @@
-//import json server
+// import json server
+const jsonServer = require('json-server');
+const path = require('path');
 
-const jsonServer = require('json-server')
+// backend application
+const restServer = jsonServer.create();
 
-//backend application
+// router - point to your questions.json file
+const router = jsonServer.router(path.join(__dirname, 'questions.json'));
 
-const restServer = jsonServer.create()
+// middleware
+const middleware = jsonServer.defaults();
 
-//router
+// port
+const port = process.env.PORT || 3001;
 
-const router = jsonServer.router()
+// use
+restServer.use(middleware);
+restServer.use(router);
 
-//middleware
-
-const middleware = jsonServer.defaults()
-
-//ports
-
-const port = 3001
-
-
-//use
-
-restServer.use(router)
-restServer.use(middleware)
-
-//listen
-
-restServer.listen(port,()=>{
-    console.log('the server is listening' + port);
-    
-})
+// listen
+restServer.listen(port, () => {
+    console.log(`The server is listening on port ${port}`);
+});
