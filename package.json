@@ -1,0 +1,16 @@
+{
+  "name": "quiz-backend",
+  "version": "1.0.0",
+  "description": "JSON server backend for quiz app",
+  "main": "index.js",
+  "scripts": {
+    "start": "json-server --watch questions.json --port 10000"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "json-server": "^0.17.0"
+  }
+}
+
