@@ -1,6 +1,7 @@
 // import json server
 const jsonServer = require('json-server');
 const path = require('path');
+const cors = require('cors'); // <-- add this line
 
 // backend application
 const restServer = jsonServer.create();
@@ -15,6 +16,7 @@ const middleware = jsonServer.defaults();
 const port = process.env.PORT || 3001;
 
 // use
+restServer.use(cors());        // <-- enable CORS for all origins
 restServer.use(middleware);
 restServer.use(router);
 
@@ -22,3 +24,4 @@ restServer.use(router);
 restServer.listen(port, () => {
     console.log(`The server is listening on port ${port}`);
 });
+
